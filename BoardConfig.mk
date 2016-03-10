@@ -23,10 +23,12 @@ TARGET_CPU_VARIANT := krait
 TARGET_NO_BOOTLOADER := true
 
 # Inline kernel building
+BOARD_CUSTOM_BOOTIMG_MK := device/moto/shamu/mkbootimg.mk
 TARGET_KERNEL_CONFIG := shamu_defconfig
 TARGET_KERNEL_SOURCE := kernel/moto/shamu
-BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+#BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 
+TARGET_KERNEL_ARCH := arm
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE :=  2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
@@ -114,7 +116,7 @@ ifeq ($(HOST_OS),linux)
 TARGET_USERIMAGES_USE_F2FS := true
 endif
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/moto/shamu
+#TARGET_RELEASETOOLS_EXTENSIONS := device/moto/shamu
 
 # Support Native Layer RF cutback
 BOARD_USES_CUTBACK_IN_RILD := true
@@ -181,8 +183,5 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.shamu
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
-
-# CMHW
-BOARD_HARDWARE_CLASS := device/moto/shamu/cmhw
 
 -include vendor/motorola/shamu/BoardConfigVendor.mk
